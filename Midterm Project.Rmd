@@ -1,26 +1,20 @@
 ---
-title             : "The title"
-shorttitle        : "Title"
+title             : "Replication of an Experiment from 'The Comparative Value of Survival Processing"
+shorttitle        : "Adaptive Memory"
 
 author: 
-  - name          : "First Author"
+  - name          : "Aira Contreras"
     affiliation   : "1"
     corresponding : yes    # Define only one corresponding author
-    address       : "Postal address"
-    email         : "my@email.com"
-  - name          : "Ernst-August Doelle"
-    affiliation   : "1,2"
+    address       : "Not Applicable"
+    email         : "aira.contreras@gmail.com"
 
 affiliation:
   - id            : "1"
-    institution   : "Wilhelm-Wundt-University"
-  - id            : "2"
-    institution   : "Konstanz Business School"
+    institution   : "City University of New York- Brooklyn College"
 
 authornote: |
-  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
-
-  Enter author note here.
+  This project has been done for Professor Crumps' Spring 2019 Special Topics in Experimental Psychology Pscy. 7709G.
 
 abstract: |
   One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
