@@ -23,9 +23,9 @@
 }{}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Replication of an Experiment from 'The Comparative Value of Survival Processing},
+            pdftitle={Replication of an Experiment from `The Comparative Value of Survival Processing'},
             pdfauthor={Aira Contreras},
-            pdfkeywords={keywords},
+            pdfkeywords={Replication, Adaptive Memory, Survival, Graduate Class},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -63,15 +63,15 @@
 \def\footnote{\protect\rmarkdownfootnote}
 
 
-  \title{Replication of an Experiment from 'The Comparative Value of Survival Processing}
+  \title{Replication of an Experiment from `The Comparative Value of Survival Processing'}
     \author{Aira Contreras\textsuperscript{1}}
     \date{}
   
 \shorttitle{Adaptive Memory}
 \affiliation{
 \vspace{0.5cm}
-\textsuperscript{1} City University of New York- Brooklyn College}
-\keywords{keywords\newline\indent Word count: X}
+\textsuperscript{1} Brooklyn College of the City University of New York}
+\keywords{Replication, Adaptive Memory, Survival, Graduate Class\newline\indent Word count: X}
 \usepackage{csquotes}
 \usepackage{upgreek}
 \captionsetup{font=singlespacing,justification=justified}
@@ -107,19 +107,7 @@
 Correspondence concerning this article should be addressed to Aira Contreras, Not Applicable. E-mail: \href{mailto:aira.contreras@gmail.com}{\nolinkurl{aira.contreras@gmail.com}}}
 
 \abstract{
-One or two sentences providing a \textbf{basic introduction} to the field, comprehensible to a scientist in any discipline.
-
-Two to three sentences of \textbf{more detailed background}, comprehensible to scientists in related disciplines.
-
-One sentence clearly stating the \textbf{general problem} being addressed by this particular study.
-
-One sentence summarizing the main result (with the words ``\textbf{here we show}'' or their equivalent).
-
-Two or three sentences explaining what the \textbf{main result} reveals in direct comparison to what was thought to be the case previously, or how the main result adds to previous knowledge.
-
-One or two sentences to put the results into a more \textbf{general context}.
-
-Two or three sentences to provide a \textbf{broader perspective}, readily comprehensible to a scientist in any discipline.
+The experiments in the Nairne, Pandeirada, and Thompson (2008) paper test human memory systems in survival and non-survival conditions in an effort to determine if one yields measurably better recollection from participants. Participants were asked to rate words in conditions that produce excellent retention including conditions that had words related to pleasantness, imagery, and self reference. Previous experiments have suggested that participants show superior memory when words were related to survival conditions. The researchers suggest that this may be a result of fitness advantages accrued in the ancestral past. The goal of this exercise is to replicate on of the experiments presented in the (Nairne et al., 2008) paper and determine if the results were similar or even the same. The analysis will be done via the Rstudio software. I was able to {[}successfully/not successfully{]} replication the experiment.
 
 
 }
@@ -144,7 +132,7 @@ We report how we determined our sample size, all data exclusions (if any), all m
 \hypertarget{data-analysis}{%
 \subsection{Data analysis}\label{data-analysis}}
 
-We used R (Version 3.5.2; R Core Team, 2018) and the R-packages \emph{devtools} (Version 2.0.1; Wickham et al., 2018), \emph{papaja} (Version 0.1.0.9842; Aust \& Barth, 2018), \emph{readxl} (Version 1.3.1; Wickham \& Bryan, 2019), and \emph{usethis} (Version 1.4.0; Wickham \& Bryan, 2018) for all our analyses.
+We used R (Version 3.5.2; R Core Team, 2018) and the R-packages \emph{devtools} (Version 2.0.1; Wickham et al., 2018), \emph{papaja} (Version 0.1.0.9842; Aust \& Barth, 2018), \emph{pwr} (Version 1.2.2; Champely, 2018), \emph{readxl} (Version 1.3.1; Wickham \& Bryan, 2019), and \emph{usethis} (Version 1.4.0; Wickham \& Bryan, 2018) for all our analyses.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -157,11 +145,6 @@ We used R (Version 3.5.2; R Core Team, 2018) and the R-packages \emph{devtools} 
 \hypertarget{references}{%
 \section{References}\label{references}}
 
-\begin{verbatim}
-## Warning in readLines(file): incomplete final line found on 'r-
-## references.bib'
-\end{verbatim}
-
 \begingroup
 \setlength{\parindent}{-0.5in}
 \setlength{\leftskip}{0.5in}
@@ -169,6 +152,12 @@ We used R (Version 3.5.2; R Core Team, 2018) and the R-packages \emph{devtools} 
 \hypertarget{refs}{}
 \leavevmode\hypertarget{ref-R-papaja}{}%
 Aust, F., \& Barth, M. (2018). \emph{papaja: Create APA manuscripts with R Markdown}. Retrieved from \url{https://github.com/crsh/papaja}
+
+\leavevmode\hypertarget{ref-R-pwr}{}%
+Champely, S. (2018). \emph{Pwr: Basic functions for power analysis}. Retrieved from \url{https://github.com/heliosdrm/pwr}
+
+\leavevmode\hypertarget{ref-nairne2008adaptive}{}%
+Nairne, J. S., Pandeirada, J. N., \& Thompson, S. R. (2008). Adaptive memory: The comparative value of survival processing. \emph{Psychological Science}, \emph{19}(2), 176--180.
 
 \leavevmode\hypertarget{ref-R-base}{}%
 R Core Team. (2018). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
