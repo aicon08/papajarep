@@ -69,7 +69,7 @@ As described by the paper, participants were randomly assigned into one of the t
 
 
 ## Data analysis
-A within-subjects analysis of variance (ANOVA) was conducted to analyze the data collected.
+A within-subjects analysis of variance (ANOVA) was conducted to analyze the data collected. Lecture from Dr. Erin M. Buchanan used as learning tool to perform a within subjects ANOVA [@R-One-WayVid]. Recommended R packages downloaded according to video instructions. 
 
 Original citation from papaja was also retained: 'We used `r cite_r("r-references.bib")` for all our analyses.'
 
