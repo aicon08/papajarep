@@ -23,7 +23,7 @@
 }{}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Replication of an Experiment from `The Comparative Value of Survival Processing'},
+            pdftitle={Replication of Experiment 2 from Nairne, Pandeirada, and Thompson (2008) `The Comparative Value of Survival Processing'},
             pdfauthor={Aira Contreras},
             pdfkeywords={Replication, Adaptive Memory, Survival, Graduate Class},
             pdfborder={0 0 0},
@@ -63,7 +63,7 @@
 \def\footnote{\protect\rmarkdownfootnote}
 
 
-  \title{Replication of an Experiment from `The Comparative Value of Survival Processing'}
+  \title{Replication of Experiment 2 from Nairne, Pandeirada, and Thompson (2008) `The Comparative Value of Survival Processing'}
     \author{Aira Contreras\textsuperscript{1}}
     \date{}
   
@@ -98,16 +98,13 @@
 \makeatletter
 \renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
 \makeatother
-\usepackage{lineno}
-
-\linenumbers
 
 \authornote{This project has been done for Professor Crumps' Spring 2019 Special Topics in Experimental Psychology Pscy. 7709G.
 
 Correspondence concerning this article should be addressed to Aira Contreras, Not Applicable. E-mail: \href{mailto:aira.contreras@gmail.com}{\nolinkurl{aira.contreras@gmail.com}}}
 
 \abstract{
-The experiments in the Nairne, Pandeirada, and Thompson (2008) paper test human memory systems in survival and non-survival conditions in an effort to determine if one yields measurably better recollection from participants. Participants were asked to rate words in conditions that produce excellent retention including conditions that had words related to pleasantness, imagery, and self reference. Previous experiments have suggested that participants show superior memory when words were related to survival conditions. The researchers suggest that this may be a result of fitness advantages accrued in the ancestral past. The goal of this exercise is to replicate on of the experiments presented in the (Nairne et al., 2008) paper and determine if the results were similar or even the same. The analysis will be done via the Rstudio software. I was able to {[}successfully/not successfully{]} replication the experiment.
+The experiments in the Nairne, Pandeirada, and Thompson (2008) paper test human memory systems in survival and non-survival conditions in an effort to determine if one yields measurably better recollection from participants. Participants were asked to rate words in conditions that produce excellent retention including conditions that had words related to pleasantness, imagery, and self reference. Previous experiments have suggested that participants show superior memory when words were related to survival conditions. The researchers suggest that this may be a result of fitness advantages accrued in the ancestral past. The goal of this exercise is to replicate one of the experiments presented in the paper and determine if the results were similar or even the same. The analysis will be done via the Rstudio software. I was able to {[}successfully/not successfully{]} replication the experiment.
 
 
 }
@@ -118,21 +115,32 @@ The experiments in the Nairne, Pandeirada, and Thompson (2008) paper test human 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
 
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study.
-
 \hypertarget{participants}{%
 \subsection{Participants}\label{participants}}
 
-\hypertarget{material}{%
-\subsection{Material}\label{material}}
+Twenty-four participants were recruited into the experiment. It is unclear what the demographics of these participants are, though it could be surmised that they may have been of the average undergraduate population (late teens, early twenties) because some were rewarded with partial credit to an introductory psychology course.
+
+\hypertarget{apparatus}{%
+\subsection{Apparatus}\label{apparatus}}
+
+Two different experimental conditions were created: Survival and Vacation.These two conditions were further subdived into 4 experimental blocks. Participants were demonstrated each of the two conditions within the 4 blocks and tested individually in sessions that lasted approximatedly 30 minutes.
+
+\hypertarget{materials-and-design}{%
+\subsection{Materials and Design}\label{materials-and-design}}
+
+In the study a set of 38 unrelated words (32 experimental words and 6 practice words) were created using the updated Battig and Montigue norms (Van Overschelde, Rawson, \& Dunlosky, 2004).Four blocks, each containing 8 words in random order, were created. Particpants all experienced the same random order. Participants were asked to rate 16 words with the survival scenario (S) and 16 words using the vacation scenario (V; see above criteria excluding Survival). The rating scale was from 1 (totally irrelevant) to 5(extremely relevant). Presentation of the words in 2 conditions (SVSV or VSVS) was followed by a retention invertval (digit recall task), and then an unexpected free recall was done to test memory.
 
 \hypertarget{procedure}{%
 \subsection{Procedure}\label{procedure}}
 
+As described by the paper, participants were randomly assigned into one of the two experimental conditions upon arrival to the lab. Counterbalancing was taken into consideration. General instructions were provided instructing to rate words according to the particular scenarios. At the begining of each block, either the survival instructions appeared or the vacation instructions appeared; participants rated three practice words to ensure the two rating scenarios were understood. All blocks were presented, with the fourth block followed by a distractor task and then the surprise free-recall. For more detail on the instructions please read Experiment 1 procedure for Survival and Experiment 2 procedure for Vacation in Nairne et al. (2008).
+
 \hypertarget{data-analysis}{%
 \subsection{Data analysis}\label{data-analysis}}
 
-We used R (Version 3.5.2; R Core Team, 2018) and the R-packages \emph{devtools} (Version 2.0.1; Wickham et al., 2018), \emph{papaja} (Version 0.1.0.9842; Aust \& Barth, 2018), \emph{pwr} (Version 1.2.2; Champely, 2018), \emph{readxl} (Version 1.3.1; Wickham \& Bryan, 2019), and \emph{usethis} (Version 1.4.0; Wickham \& Bryan, 2018) for all our analyses.
+A within-subjects analysis of variance (ANOVA) was conducted to analyze the data collected.
+
+Original citation from papaja was also retained: \enquote{We used R (Version 3.5.2; R Core Team, 2018) and the R-packages \emph{devtools} (Version 2.0.1; Wickham et al., 2018), \emph{papaja} (Version 0.1.0.9842; Aust \& Barth, 2018), \emph{pwr} (Version 1.2.2; Champely, 2018), \emph{readxl} (Version 1.3.1; Wickham \& Bryan, 2019), and \emph{usethis} (Version 1.4.0; Wickham \& Bryan, 2018) for all our analyses.}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -161,6 +169,9 @@ Nairne, J. S., Pandeirada, J. N., \& Thompson, S. R. (2008). Adaptive memory: Th
 
 \leavevmode\hypertarget{ref-R-base}{}%
 R Core Team. (2018). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
+
+\leavevmode\hypertarget{ref-van2004category}{}%
+Van Overschelde, J. P., Rawson, K. A., \& Dunlosky, J. (2004). Category norms: An updated and expanded version of the norms. \emph{Journal of Memory and Language}, \emph{50}(3), 289--335.
 
 \leavevmode\hypertarget{ref-R-usethis}{}%
 Wickham, H., \& Bryan, J. (2018). \emph{Usethis: Automate package and project setup}. Retrieved from \url{https://github.com/r-lib/usethis}

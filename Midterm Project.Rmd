@@ -1,5 +1,5 @@
 ---
-title             : "Replication of an Experiment from 'The Comparative Value of Survival Processing'"
+title             : "Replication of Experiment 2 from Nairne, Pandeirada, and Thompson (2008) 'The Comparative Value of Survival Processing'"
 shorttitle        : "Adaptive Memory"
 
 author: 
@@ -17,7 +17,7 @@ authornote: |
   This project has been done for Professor Crumps' Spring 2019 Special Topics in Experimental Psychology Pscy. 7709G.
 
 abstract: |
-  The experiments in the @nairne2008adaptive paper test human memory systems in survival and non-survival conditions in an effort to determine if one yields measurably better recollection from participants. Participants were asked to rate words in conditions that produce excellent retention including conditions that had words related to pleasantness, imagery, and self reference. Previous experiments have suggested that participants show superior memory when words  were related to survival conditions. The researchers suggest that this may be a result of fitness advantages accrued in the ancestral past. The goal of this exercise is to replicate on of the experiments presented in the [@nairne2008adaptive] paper and determine if the results were similar or even the same. The analysis will be done via the Rstudio software. I was able to [successfully/not successfully] replication the experiment.
+  The experiments in the @nairne2008adaptive paper test human memory systems in survival and non-survival conditions in an effort to determine if one yields measurably better recollection from participants. Participants were asked to rate words in conditions that produce excellent retention including conditions that had words related to pleasantness, imagery, and self reference. Previous experiments have suggested that participants show superior memory when words  were related to survival conditions. The researchers suggest that this may be a result of fitness advantages accrued in the ancestral past. The goal of this exercise is to replicate one of the experiments presented in the paper and determine if the results were similar or even the same. The analysis will be done via the Rstudio software. I was able to [successfully/not successfully] replication the experiment.
   
   
   
@@ -32,7 +32,7 @@ floatsintext      : no
 figurelist        : no
 tablelist         : no
 footnotelist      : no
-linenumbers       : yes
+linenumbers       : no
 mask              : no
 draft             : no
 
@@ -54,17 +54,24 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 
 # Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
-
 ## Participants
+Twenty-four participants were recruited into the experiment. It is unclear what the demographics of these participants are, though it could be surmised that they may have been of the average undergraduate population (late teens, early twenties) because some were rewarded with partial credit to an introductory psychology course.
 
-## Material
+## Apparatus
+Two different experimental conditions were created: Survival and Vacation.These two conditions were further subdived into 4 experimental blocks. Participants were demonstrated each of the two conditions within the 4 blocks and tested individually in sessions that lasted approximatedly 30 minutes.
+
+## Materials and Design
+In the study a set of 38 unrelated words (32 experimental words and 6 practice words) were created using the updated Battig and Montigue norms [@van2004category].Four blocks, each containing 8 words in random order, were created. Particpants all experienced the same random order. Participants were asked to rate 16 words with the survival scenario (S) and 16 words using the vacation scenario (V; see above criteria excluding Survival). The rating scale was from 1 (totally irrelevant) to 5(extremely relevant). Presentation of the words in 2 conditions (SVSV or VSVS) was followed by a retention invertval (digit recall task), and then an unexpected free recall was done to test memory.
 
 ## Procedure
 
+As described by the paper, participants were randomly assigned into one of the two experimental conditions upon arrival to the lab. Counterbalancing was taken into consideration. General instructions were provided instructing to rate words according to the particular scenarios. At the begining of each block, either the survival instructions appeared or the vacation instructions appeared; participants rated three practice words to ensure the two rating scenarios were understood. All blocks were presented, with the fourth block followed by a distractor task and then the surprise free-recall. For more detail on the instructions please read Experiment 1 procedure for Survival and Experiment 2 procedure for Vacation in @nairne2008adaptive. 
+
 
 ## Data analysis
-We used `r cite_r("r-references.bib")` for all our analyses.
+A within-subjects analysis of variance (ANOVA) was conducted to analyze the data collected.
+
+Original citation from papaja was also retained: 'We used `r cite_r("r-references.bib")` for all our analyses.'
 
 
 # Results
