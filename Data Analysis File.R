@@ -24,8 +24,8 @@ long.prop.c$Subject<-as.factor(long.prop.c$Subject)
 long.prop.c$Condition<-as.factor(long.prop.c$Condition)
 
 groupsummary<-summarySE(long.prop.c,measurevar = "Rate",groupvars = "Condition")
-errorbarinfoL<-groupsummary$Rate-groupsummary$se
-errorbarinfoU<-groupsummary$Rate+groupsummary$se
+# errorbarinfoL<-groupsummary$Rate-groupsummary$se
+# errorbarinfoU<-groupsummary$Rate+groupsummary$se
 
 #Within Subjects ANOVA code
 
@@ -49,32 +49,32 @@ d.dep.t.avg(m1=.5334821,m2=.4508929,sd1 =.1376495 ,sd2=.1132909,n=28,a=.05)
 
 #bargraph data
 
-cleanup<- theme(panel.grid.major = element_blank(),
-                panel.grid.minor = element_blank(),
-                panel.background = element_blank(),
-                axis.line = element_line(colour="black"),
-                legend.key = element_rect(fill = "white"),
-                text = element_text(size = 15))
-
-bargraph<- ggplot(long.prop.c,aes(Condition,Rate))
-
-bargraph+
-  stat_summary(fun.y = mean,
-               geom = "bar",
-               fill= "grey",
-               color="black") +
-  
-  stat_summary(fun.data = mean_cl_normal(long.prop.c$Rate),
-               geom = "errorbar",
-               position = position_dodge(width = 0.9),
-               width=0.2) +
-  cleanup+
-  
-  xlab("Condition") +
-  ylab("Proportion Correct") +
-  scale_x_discrete(labels=c("Survival","Vacation")) +
-  coord_cartesian(ylim = c(.30,.65)) +
-  scale_y_continuous(breaks = seq(.3,.65,.05)) 
+#cleanup<- theme(panel.grid.major = element_blank(),
+#                 panel.grid.minor = element_blank(),
+#                 panel.background = element_blank(),
+#                 axis.line = element_line(colour="black"),
+#                 legend.key = element_rect(fill = "white"),
+#                 text = element_text(size = 15))
+# 
+# bargraph<- ggplot(long.prop.c,aes(Condition,Rate))
+# 
+# bargraph+
+#   stat_summary(fun.y = mean,
+#                geom = "bar",
+#                fill= "grey",
+#                color="black") +
+#   
+#   stat_summary(fun.data = mean_cl_normal(long.prop.c$Rate),
+#                geom = "errorbar",
+#                position = position_dodge(width = 0.9),
+#                width=0.2) +
+#   cleanup+
+#   
+#   xlab("Condition") +
+#   ylab("Proportion Correct") +
+#   scale_x_discrete(labels=c("Survival","Vacation")) +
+#   coord_cartesian(ylim = c(.30,.65)) +
+#   scale_y_continuous(breaks = seq(.3,.65,.05)) 
   #geom_errorbar(aes(ymin=errorbarinfoL,ymax=errorbarinfoU),width=.2,position = position_dodge(.9))
 
 
@@ -85,9 +85,16 @@ bargraph+
 
 #groupsummary$Condition<-as.factor(groupsummary$Condition)
 
-#bargraph3<- ggplot(groupsummary,aes(x=Condition,y=Rate,fill="white")) +
-            #geom_bar(position = position_dodge(),stat = "identity") +
-            #geom_errorbar(aes(ymin=Rate-se,ymax=Rate+se),width=.2,position = position_dodge(.9))
+bargraph3<- ggplot(groupsummary,aes(x=Condition,y=Rate)) +
+            geom_bar(position = position_dodge(),stat = "identity") +
+            geom_errorbar(aes(ymin=Rate-se,ymax=Rate+se),width=.2,position = position_dodge(.9))
+
+bargraph3+coord_cartesian(ylim=c(0.3,.65))+
+          scale_y_continuous(breaks = seq(.3,.65,.05))+
+          theme_classic()+
+          xlab(element_blank())+
+          ylab(label = "Proportion Correct")
+
 
 
 
