@@ -41,15 +41,9 @@ classoption       : "man"
 output            : papaja::apa6_pdf
 ---
 
-```{r setup, include = FALSE}
-library("papaja")
-```
 
-```{r analysis-preferences}
-# Seed for random number generation
-set.seed(42)
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
-```
+
+
 
 
 
@@ -71,65 +65,39 @@ As described by the paper, participants were randomly assigned into one of the t
 ## Data analysis
 A within-subjects analysis of variance (ANOVA) was conducted to analyze the data collected. Lecture from Dr. Erin M. Buchanan used as learning tool to perform a within subjects ANOVA [@R-One-WayVid]. Recommended R packages downloaded according to video instructions. 
 
-Original citation from papaja was also retained: 'We used `r cite_r("r-references.bib")` for all our analyses.'
+Original citation from papaja was also retained: 'We used R [Version 3.5.2; @R-base] and the R-packages *devtools* [Version 2.0.1; @R-devtools], *dplyr* [Version 0.8.0.1; @R-dplyr], *ez* [Version 4.4.0; @R-ez], *ggplot2* [Version 3.1.0; @R-ggplot2], *lattice* [Version 0.20.38; @R-lattice], *One-WayVid* [@R-One-WayVid], *papaja* [Version 0.1.0.9842; @R-papaja], *plyr* [Version 1.8.4; @R-dplyr; @R-plyr], *pwr* [Version 1.2.2; @R-pwr], *readxl* [Version 1.3.1; @R-readxl], *reshape2* [Version 1.4.3; @R-reshape2], *Rmisc* [Version 1.5; @R-Rmisc], *schoRsch* [Version 1.5; @R-schoRsch], and *usethis* [Version 1.4.0; @R-usethis] for all our analyses.'
 
 
 # Results
 
-```{r eval}
-library(plyr)
-library(dplyr)
-library(ggplot2)
-library(readxl)
-library(reshape2)
-library(Rmisc)
-library(ez)
-library(schoRsch)
 
-Data_Replication_NairneEtAl_2008<-read_excel("/cloud/project/Data_Replication_NairneEtAl_2008.xls")
-prop.c<-Data_Replication_NairneEtAl_2008 %>%
-        select(Subject,Mean_RememberedWords_Survival,Mean_RememberedWords_Vacation)%>%
-        filter(Mean_RememberedWords_Survival>.2,
-               Mean_RememberedWords_Survival<.8,
-               Mean_RememberedWords_Vacation<.8,
-               Mean_RememberedWords_Vacation>.2)%>%
-        group_by(Subject)
-
-colnames(prop.c)<-c("Subject","Survival","Vacation")
-
-long.prop.c<-melt(prop.c,id="Subject",measured= c("Survival","Vacation"))
-colnames(long.prop.c)<- c("Subject","Condition","Rate")
-
-long.prop.c$Subject<-as.factor(long.prop.c$Subject)
-long.prop.c$Condition<-as.factor(long.prop.c$Condition)
-
-groupsummary<-summarySE(long.prop.c,measurevar = "Rate",groupvars = "Condition")
 
 
 ```
-
-```{r}
-result<-ezANOVA(data=long.prop.c,wid=Subject,within= Condition,dv= Rate, detailed = T)
-result2<-aov(long.prop.c$Rate~long.prop.c$Condition+Error(Subject/Condition), data = long.prop.c)
-#summary(result2)
-anova_out(result)
-
+## Warning: Collapsing data to cell means. *IF* the requested effects are a
+## subset of the full design, you must use the "within_full" argument, else
+## results may be inaccurate.
 ```
 
-```{r}
-bargraph3<- ggplot(groupsummary,aes(x=Condition,y=Rate)) +
-            geom_bar(position = position_dodge(),stat = "identity") +
-            geom_errorbar(aes(ymin=Rate-ci,ymax=Rate+ci),width=.2,position = position_dodge(.9))
-
-bargraph3+coord_cartesian(ylim=c(0.3,.65))+
-          scale_y_continuous(breaks = seq(.3,.65,.05))+
-          theme_classic()+
-          xlab(element_blank())+
-          ylab(label = "Proportion Correct")+
-          labs(title="Proportion of Recalled Words",caption = "Fig. 1- Average proportion of words recalled for each scenario. Error bars are the 95% confidence intervals")+
-          theme(plot.title = element_text(hjust = 0.5))
-
 ```
+## $`--- ANOVA RESULTS     ------------------------------------`
+##        Effect        MSE df1 df2      F     p petasq getasq
+## 1 (Intercept) 0.01497070   1  24 779.56 0.000   0.97   0.95
+## 2   Condition 0.01261393   1  24   6.54 0.017   0.21   0.11
+## 
+## $`--- SPHERICITY TESTS  ------------------------------------`
+## [1] "N/A"
+## 
+## $`--- FORMATTED RESULTS ------------------------------------`
+##        Effect                                   Text
+## 1 (Intercept) F(1, 24) = 779.56, p < .001, np2 = .97
+## 2   Condition F(1, 24) =   6.54, p = .017, np2 = .21
+## 
+## $`NOTE:`
+## [1] "Reporting unadjusted p-values."
+```
+
+![ ](Midterm_Project_files/figure-latex/unnamed-chunk-2-1.pdf) 
 
 
 
@@ -137,10 +105,7 @@ bargraph3+coord_cartesian(ylim=c(0.3,.65))+
 \newpage
 
 # References
-```{r create_r-references}
-r_refs(file = "r-references.bib")
 
-```
 
 \begingroup
 \setlength{\parindent}{-0.5in}

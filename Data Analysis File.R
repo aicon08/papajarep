@@ -93,7 +93,8 @@ bargraph3+coord_cartesian(ylim=c(0.3,.65))+
           scale_y_continuous(breaks = seq(.3,.65,.05))+
           theme_classic()+
           xlab(element_blank())+
-          ylab(label = "Proportion Correct")
+          ylab(label = "Proportion Correct")+
+          fig.cap
 
 
 

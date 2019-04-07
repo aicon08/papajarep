@@ -18,7 +18,13 @@ The code block below pulled and filtered the data for the proportion of words re
 library(plyr)
 library(dplyr)
 library(ez)
+library(readxl)
+library(reshape2)
+library(Rmisc)
+library(Hmisc)
+library(MOTE)
 
+Data_Replication_NairneEtAl_2008<-read_excel("/cloud/project/Data_Replication_NairneEtAl_2008.xls")
 prop.c<-Data_Replication_NairneEtAl_2008 %>%
         select(Subject,Mean_RememberedWords_Survival,Mean_RememberedWords_Vacation)%>%
         filter(Mean_RememberedWords_Survival>.2,
