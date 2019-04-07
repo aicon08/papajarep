@@ -418,6 +418,7 @@ library(Rmisc)</code></pre>
 ## 
 ##     format.pval, units</code></pre>
 <pre class="r"><code>library(MOTE)
+library(schoRsch)
 
 Data_Replication_NairneEtAl_2008&lt;-read_excel(&quot;/cloud/project/Data_Replication_NairneEtAl_2008.xls&quot;)
 prop.c&lt;-Data_Replication_NairneEtAl_2008 %&gt;%
@@ -440,7 +441,23 @@ long.prop.c$Condition&lt;-as.factor(long.prop.c$Condition)</code></pre>
 <pre><code>## Warning: Collapsing data to cell means. *IF* the requested effects are a
 ## subset of the full design, you must use the &quot;within_full&quot; argument, else
 ## results may be inaccurate.</code></pre>
-<pre class="r"><code>result2&lt;-aov(long.prop.c$Rate~long.prop.c$Condition+Error(Subject/Condition), data = long.prop.c)</code></pre>
+<pre class="r"><code>result2&lt;-aov(long.prop.c$Rate~long.prop.c$Condition+Error(Subject/Condition), data = long.prop.c)
+anova_out(result)</code></pre>
+<pre><code>## $`--- ANOVA RESULTS     ------------------------------------`
+##        Effect        MSE df1 df2      F     p petasq getasq
+## 1 (Intercept) 0.01497070   1  24 779.56 0.000   0.97   0.95
+## 2   Condition 0.01261393   1  24   6.54 0.017   0.21   0.11
+## 
+## $`--- SPHERICITY TESTS  ------------------------------------`
+## [1] &quot;N/A&quot;
+## 
+## $`--- FORMATTED RESULTS ------------------------------------`
+##        Effect                                   Text
+## 1 (Intercept) F(1, 24) = 779.56, p &lt; .001, np2 = .97
+## 2   Condition F(1, 24) =   6.54, p = .017, np2 = .21
+## 
+## $`NOTE:`
+## [1] &quot;Reporting unadjusted p-values.&quot;</code></pre>
 <p>After performing and storing the ANOVAs I prepared for a post hoc test. Pairwise t-test with the bonferroni. I pulled the mean, sd, and length of each group as well.</p>
 <pre class="r"><code>tapply(long.prop.c$Rate,list(long.prop.c$Condition), mean)</code></pre>
 <pre><code>##  Survival  Vacation 

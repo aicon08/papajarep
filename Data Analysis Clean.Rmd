@@ -23,6 +23,7 @@ library(reshape2)
 library(Rmisc)
 library(Hmisc)
 library(MOTE)
+library(schoRsch)
 
 Data_Replication_NairneEtAl_2008<-read_excel("/cloud/project/Data_Replication_NairneEtAl_2008.xls")
 prop.c<-Data_Replication_NairneEtAl_2008 %>%
@@ -50,6 +51,7 @@ The ANOVA was conducted in 2 different ways using the aov function provided by R
 ```{r}
 result<-ezANOVA(data=long.prop.c,wid=Subject,within= Condition,dv= Rate, detailed = T)
 result2<-aov(long.prop.c$Rate~long.prop.c$Condition+Error(Subject/Condition), data = long.prop.c)
+anova_out(result)
 ```
 
 After performing and storing the ANOVAs I prepared for a post hoc test. Pairwise t-test with the bonferroni. I pulled the mean, sd, and length of each group as well. 

@@ -54,6 +54,7 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 
 # Methods
+
 ## Participants
 Twenty-four participants were recruited into the experiment. It is unclear what the demographics of these participants are, though it could be surmised that they may have been of the average undergraduate population (late teens, early twenties) because some were rewarded with partial credit to an introductory psychology course.
 
@@ -75,6 +76,8 @@ Original citation from papaja was also retained: 'We used `r cite_r("r-reference
 
 
 # Results
+
+I was unsuccessful in the re-anlysis of the results, though I did learn about the different ways that data needs to be re-formatted in order to perform a within subject ANVOA analysis. The authors reported the following results F(1,23)=5.70, MSE=0.028, partial eta squared=.2. My results are F(1,24)=6.54,MSE=0.013, partial eta squared=.21, p=.017. I believe that the way the data was imported may have affected my results, as I ended up with 30 subjects as opposed to 24. The sort of data exclusions that the authors performed were not specified, so I had to do a lot of guessing that was not in line with what was intially performed by the authors. I also attempted to replicate a bar graph as they had and had more success in that round.
 
 ```{r eval}
 library(plyr)
@@ -108,10 +111,10 @@ groupsummary<-summarySE(long.prop.c,measurevar = "Rate",groupvars = "Condition")
 
 ```
 
-```{r}
+```{r eval=FALSE}
 result<-ezANOVA(data=long.prop.c,wid=Subject,within= Condition,dv= Rate, detailed = T)
 result2<-aov(long.prop.c$Rate~long.prop.c$Condition+Error(Subject/Condition), data = long.prop.c)
-#summary(result2)
+summary(result2)
 anova_out(result)
 
 ```
@@ -131,9 +134,9 @@ bargraph3+coord_cartesian(ylim=c(0.3,.65))+
 
 ```
 
+# Discussion
 
-
-
+The authors were able to indicate that the Survival condition produced a greater proportion of correctly remembered words than the vacation group. Though I was not able to replicate this with confidence, I do not think it is that the effect is not there, but rather that I am not experienced enough in the data analysis portion of the project as required. Though I was not able to replicate the results, my results do come quite close with a p=.017, indicating statistical significance as my set alpha level was p=0.05.
 \newpage
 
 # References

@@ -99,15 +99,18 @@
 \renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
 \makeatother
 
-\begin{document}
-\maketitle
-\begin{abstract}
+\authornote{This project has been done for Professor Crumps' Spring 2019 Special Topics in Experimental Psychology Pscy. 7709G.
+
+Correspondence concerning this article should be addressed to Aira Contreras, Not Applicable. E-mail: \href{mailto:aira.contreras@gmail.com}{\nolinkurl{aira.contreras@gmail.com}}}
+
+\abstract{
 The experiments in the Nairne, Pandeirada, and Thompson (2008) paper test human memory systems in survival and non-survival conditions in an effort to determine if one yields measurably better recollection from participants. Participants were asked to rate words in conditions that produce excellent retention including conditions that had words related to pleasantness, imagery, and self reference. Previous experiments have suggested that participants show superior memory when words were related to survival conditions. The researchers suggest that this may be a result of fitness advantages accrued in the ancestral past. The goal of this exercise is to replicate one of the experiments presented in the paper and determine if the results were similar or even the same. The analysis will be done via the Rstudio software. I was able to {[}successfully/not successfully{]} replication the experiment.
 
-!!!papaja-author-note(This project has been done for Professor Crumps' Spring 2019 Special Topics in Experimental Psychology Pscy. 7709G.
 
-Correspondence concerning this article should be addressed to Aira Contreras, Not Applicable. E-mail: \href{mailto:aira.contreras@gmail.com}{\nolinkurl{aira.contreras@gmail.com}})papaja-author-note!!!
-\end{abstract}
+}
+
+\begin{document}
+\maketitle
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -142,32 +145,14 @@ Original citation from papaja was also retained: \enquote{We used R (Version 3.5
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\begin{verbatim}
-## Warning: Collapsing data to cell means. *IF* the requested effects are a
-## subset of the full design, you must use the "within_full" argument, else
-## results may be inaccurate.
-\end{verbatim}
-
-\begin{verbatim}
-## $`--- ANOVA RESULTS     ------------------------------------`
-##        Effect        MSE df1 df2      F     p petasq getasq
-## 1 (Intercept) 0.01497070   1  24 779.56 0.000   0.97   0.95
-## 2   Condition 0.01261393   1  24   6.54 0.017   0.21   0.11
-## 
-## $`--- SPHERICITY TESTS  ------------------------------------`
-## [1] "N/A"
-## 
-## $`--- FORMATTED RESULTS ------------------------------------`
-##        Effect                                   Text
-## 1 (Intercept) F(1, 24) = 779.56, p < .001, np2 = .97
-## 2   Condition F(1, 24) =   6.54, p = .017, np2 = .21
-## 
-## $`NOTE:`
-## [1] "Reporting unadjusted p-values."
-\end{verbatim}
+I was unsuccessful in the re-anlysis of the results, though I did learn about the different ways that data needs to be re-formatted in order to perform a within subject ANVOA analysis. The authors reported the following results F(1,23)=5.70, MSE=0.028, partial eta squared=.2. My results are F(1,24)=6.54,MSE=0.013, partial eta squared=.21, p=.017. I believe that the way the data was imported may have affected my results, as I ended up with 30 subjects as opposed to 24. The sort of data exclusions that the authors performed were not specified, so I had to do a lot of guessing that was not in line with what was intially performed by the authors. I also attempted to replicate a bar graph as they had and had more success in that round.
 
 \includegraphics{Midterm_Project_files/figure-latex/unnamed-chunk-2-1.pdf}
 
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+The authors were able to indicate that the Survival condition produced a greater proportion of correctly remembered words than the vacation group. Though I was not able to replicate this with confidence, I do not think it is that the effect is not there, but rather that I am not experienced enough in the data analysis portion of the project as required. Though I was not able to replicate the results, my results do come quite close with a p=.017, indicating statistical significance as my set alpha level was p=0.05.
 \newpage
 
 \hypertarget{references}{%
