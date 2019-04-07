@@ -1,0 +1,77 @@
+---
+title: "Data Analysis Midterm Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data Analysis
+
+The data analysis for the midterm project was pulled from OSF, featuring the Nairen et al 2008 paper. There was not much guidance on what data was excluded fromt the analysis, but noting the degrees of freedom used in the within subjects ANVOVA, I attempted to replicate the analysis (and failed).
+
+The code block below pulled and filtered the data for the proportion of words remembered correctly using the dplyr package. dplyr package must be loaded prior to the initial data analysis. Data must be downloaded from https://osf.io/jhkpe/ first.
+
+```{r}
+#data file must be loaded in first
+library(plyr)
+library(dplyr)
+library(ez)
+
+prop.c<-Data_Replication_NairneEtAl_2008 %>%
+        select(Subject,Mean_RememberedWords_Survival,Mean_RememberedWords_Vacation)%>%
+        filter(Mean_RememberedWords_Survival>.2,
+               Mean_RememberedWords_Survival<.8,
+               Mean_RememberedWords_Vacation<.8,
+               Mean_RememberedWords_Vacation>.2)%>%
+        group_by(Subject)
+
+colnames(prop.c)<-c("Subject","Survival","Vacation")
+```
+
+Reformatting of the data into long format in order to perform the within subjects ANOVA.
+
+```{r}
+long.prop.c<-melt(prop.c,id="Subject",measured= c("Survival","Vacation"))
+colnames(long.prop.c)<- c("Subject","Condition","Rate")
+
+long.prop.c$Subject<-as.factor(long.prop.c$Subject)
+long.prop.c$Condition<-as.factor(long.prop.c$Condition)
+```
+
+The ANOVA was conducted in 2 different ways using the aov function provided by R (result2) and the ezANOVA function provided by the ez package (installing ez package must come first prior to attempting to use the function). I am unclear as to why the F values differ between the 2 and can only assume that I am doing something wrong using the AOV function. Sadly, I was unable to exclude the same exact data points the original authors did (though from the impression I had, they did not exclude any so I am truly stuck)
+```{r}
+result<-ezANOVA(data=long.prop.c,wid=Subject,within= Condition,dv= Rate, detailed = T)
+result2<-aov(long.prop.c$Rate~long.prop.c$Condition+Error(Subject/Condition), data = long.prop.c)
+```
+
+After performing and storing the ANOVAs I prepared for a post hoc test. Pairwise t-test with the bonferroni. I pulled the mean, sd, and length of each group as well. 
+```{r}
+tapply(long.prop.c$Rate,list(long.prop.c$Condition), mean)
+tapply(long.prop.c$Rate,list(long.prop.c$Condition), sd)
+tapply(long.prop.c$Rate,list(long.prop.c$Condition), length)
+
+pairwise.t.test(long.prop.c$Rate,long.prop.c$Condition,paired = T,p.adjust.method = "bonferroni")
+```
+
+I also did an effect size calculation in which I manually entered the required information from the above code.
+```{r}
+d.dep.t.avg(m1=.5334821,m2=.4508929,sd1 =.1376495 ,sd2=.1132909,n=28,a=.05)
+```
+I then prepared to plot my data findings. I created a data summary using the summarySE function which is part of the plyr package (note the plyr package must be installed prior to the dplyr package)
+```{r}
+groupsummary<-summarySE(long.prop.c,measurevar = "Rate",groupvars = "Condition")
+
+bargraph3<- ggplot(groupsummary,aes(x=Condition,y=Rate)) +
+            geom_bar(position = position_dodge(),stat = "identity") +
+            geom_errorbar(aes(ymin=Rate-se,ymax=Rate+se),width=.2,position = position_dodge(.9))
+
+bargraph3+coord_cartesian(ylim=c(0.3,.65))+
+          scale_y_continuous(breaks = seq(.3,.65,.05))+
+          theme_classic()+
+          xlab(element_blank())+
+          ylab(label = "Proportion Correct")
+
+```
+
