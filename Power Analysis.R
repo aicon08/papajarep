@@ -30,27 +30,27 @@
 # 
 
 
-sim_anova<-function(x)
-{
-  S<-rnorm(20,mean = 0,sd=1)
-  V<-rnorm(20,mean=0+x,sd=1)
-  data<-data.frame(subject=as.factor(rep(1:20,2)),condition=as.factor(rep(c("S","V"),each=20)),rate=c(S,V))
-  
-  aov_results1<-summary(aov(rate~condition+Error(subject/condition),data = data))
-  return(as.numeric(unlist(aov_results1)[14]))
-}
+# sim_anova<-function(x)
+# {
+#   S<-rnorm(20,mean = 0,sd=1)
+#   V<-rnorm(20,mean=0+x,sd=1)
+#   data<-data.frame(subject=as.factor(rep(1:20,2)),condition=as.factor(rep(c("S","V"),each=20)),rate=c(S,V))
+#   
+#   aov_results1<-summary(aov(rate~condition+Error(subject/condition),data = data))
+#   return(as.numeric(unlist(aov_results1)[14]))
+# }
 
 sim_anova_s<-function(x)
 {
-  S<-rnorm(20,mean = 0,sd=1)
-  V<-rnorm(20,mean=1.75,sd=1)
+  S<-rnorm(n=x,mean = 0,sd=1)
+  V<-rnorm(n=x,mean=1.75,sd=1)
   data<-data.frame(subject=as.factor(rep(1:x,2)),condition=as.factor(rep(c("S","V"),each=x)),rate=c(S,V))
   
   aov_results1<-summary(aov(rate~condition+Error(subject/condition),data = data))
   return(as.numeric(unlist(aov_results1)[14]))
 }
 #eff_size<-seq(.1,2,.1)
-subjects<-seq(0,30,1)
+subjects<-seq(2,30,1)
 
 # pow<-sapply(eff_size,
 #             FUN = function(x){
@@ -80,4 +80,4 @@ ggplot(plot_gf, aes(x=subjects,
                     y=pow))+
   geom_point()+
   geom_line()+
-  scale_x_continuous(breaks = seq(0,30,1))
+  scale_x_continuous(breaks = seq(0,30,5))

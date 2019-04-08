@@ -88,6 +88,71 @@ bargraph3+coord_cartesian(ylim=c(0.3,.65))+
 I will attempt to creat a simulated data set to run a power analysis for data that I would expect to generate.
 
 ```{r}
+# Effect size simulation with a repeated measures design. Data is set up in long format already.
+
+sim_anova<-function(x)
+{
+  S<-rnorm(20,mean = 0,sd=1)
+  V<-rnorm(20,mean=0+x,sd=1)
+  data<-data.frame(subject=as.factor(rep(1:20,2)),condition=as.factor(rep(c("S","V"),each=20)),rate=c(S,V))
+  
+  aov_results1<-summary(aov(rate~condition+Error(subject/condition),data = data))
+  return(as.numeric(unlist(aov_results1)[14]))
+}
+
+eff_size<-seq(.1,2,.1)
+
+pow<-sapply(eff_size,
+            FUN = function(x){
+              sim<-replicate(1000 ,sim_anova(x))
+              sim_pow<-length(sim[sim<.05])/length(sim)
+              return(sim_pow)
+})
+
+plot_ef<-data.frame(eff_size,pow)
+
+ggplot(plot_ef, aes(x=eff_size,
+                    y=pow))+
+  geom_point()+
+  geom_line()+
+  xlab("Effect Size")+
+  ylab("Power")+
+  scale_x_continuous(breaks = seq(0,2,.25))+
+  scale_y_continuous(breaks = seq(0,1,.1))
+```
+
+```{r }
+#Subjecst simulation with a repeated measures design
+
+# I am having trouble simulating the number of subjectst that would be needed (as the x varies and the lengths of lists change).
+
+sim_anova_s<-function(x)
+{
+  S<-rnorm(n=x,mean = 0,sd=1)
+  V<-rnorm(n=x,mean=1.75,sd=1)
+  data<-data.frame(subject=as.factor(rep(1:x,2)),condition=as.factor(rep(c("S","V"),each=x)),rate=c(S,V))
+  
+  aov_results1<-summary(aov(rate~condition+Error(subject/condition),data = data))
+  return(as.numeric(unlist(aov_results1)[14]))
+}
+
+subjects<-seq(2,30,1)
+
+pow<-sapply(subjects,
+            FUN = function(x){
+              sim<-replicate(1000,sim_anova_s(x))
+              sim_pow<-length(sim[sim<.05])/length(sim)
+              return(sim_pow)
+            })
+plot_gf<-data.frame(subjects,pow)
+
+ggplot(plot_gf, aes(x=subjects,
+                    y=pow))+
+  geom_point()+
+  geom_line()+
+  scale_x_continuous(breaks = seq(0,30,5))+
+  ylab("Power")+
+  xlab("Subjects")
 
 ```
 
