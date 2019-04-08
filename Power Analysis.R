@@ -40,18 +40,26 @@ sim_anova<-function()
   return(as.numeric(unlist(aov_results1)[14]))
 }
 
-eff_size<-seq(.1,2,.1)
+#eff_size<-seq(.1,2,.1)
+subjects<-seq(10,1000,50)
 
-pow<-sapply(eff_size,
+pow<-sapply(subjects,
             FUN = function(x){
               sim<-replicate(1000,sim_anova())
               sim_pow<-length(sim[sim<.05])/length(sim)
               return(sim_pow)
 })
 
-plot_ef<-data.frame(eff_size,pow)
+# plot_ef<-data.frame(eff_size,pow)
+# 
+# ggplot(plot_ef, aes(x=eff_size,
+#                     y=pow))+
+#   geom_point()+
+#   geom_line()
 
-ggplot(plot_ef, aes(x=eff_size,
+plot_ef<-data.frame(subjects,pow)
+
+ggplot(plot_ef, aes(x=subjects,
                     y=pow))+
   geom_point()+
   geom_line()
