@@ -74,9 +74,8 @@ A within-subjects analysis of variance (ANOVA) was conducted to analyze the data
 
 Original citation from papaja was also retained: 'We used `r cite_r("r-references.bib")` for all our analyses.'
 
-
+\newpage
 # Results
-
 I was unsuccessful in the re-anlysis of the results, though I did learn about the different ways that data needs to be re-formatted in order to perform a within subject ANVOA analysis. The authors reported the following results F(1,23)=5.70, MSE=0.028, partial eta squared=.2. My results are F(1,24)=6.54,MSE=0.013, partial eta squared=.21, p=.017. I believe that the way the data was imported may have affected my results, as I ended up with 30 subjects as opposed to 24. The sort of data exclusions that the authors performed were not specified, so I had to do a lot of guessing that was not in line with what was intially performed by the authors. I also attempted to replicate a bar graph as they had and had more success in that round.
 
 ```{r eval}
