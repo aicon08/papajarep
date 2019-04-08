@@ -83,3 +83,11 @@ bargraph3+coord_cartesian(ylim=c(0.3,.65))+
 
 ```
 
+# Power Analysis
+
+I will attempt to creat a simulated data set to run a power analysis for data that I would expect to generate.
+
+```{r}
+
+```
+
